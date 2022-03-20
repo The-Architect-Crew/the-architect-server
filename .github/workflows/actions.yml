@@ -1,0 +1,11 @@
+on: [push, pull_request]
+name: luacheck
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run luacheck
+        uses: Roang-zero1/factorio-mod-luacheck@master
+        with:
+          luacheckrc_url: https://raw.githubusercontent.com/Craigs-Crew/edgy-dark-ominous-server/main/.luacheckrc

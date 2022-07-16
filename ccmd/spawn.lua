@@ -15,7 +15,7 @@ local function check_spawn(sname)
 end
 
 minetest.register_chatcommand("spawn", {
-    params = "[location]",
+    params = "[<location>]",
     description = "Teleport to the spawn location.",
     privs = {shout=true},
     func = function(name, param)
@@ -98,7 +98,6 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 		elseif selected_spawn[name] > 2 then
 			local sindex = selected_spawn[name] - 2
 			local sname = spawnnames_table[sindex]
-			local spawndata = minetest.deserialize(mod_storage:get_string("spawns"))
 			local spawnpos = check_spawn(sname)
 			if spawnpos then
 				selected_spawn[name] = 1
@@ -120,7 +119,6 @@ minetest.register_chatcommand("spawnmod", {
 	privs = {privs=true},
 	func = function(name, param)
 		local player = minetest.get_player_by_name(name)
-		
 		-- ensure valid parameters
 		if param == "" or param == nil or not player then
 			spawn_chat(name, "Invalid parameters, use '/spawnset add/change/del <location> | /spawnset set'")
@@ -160,7 +158,6 @@ minetest.register_chatcommand("spawnmod", {
 		-- delete spawn
 		elseif cmd == "del" then
 			if spawndata[sname] then
-				local ppos = player:get_pos()
 				spawndata[sname] = nil
 				mod_storage:set_string("spawns", minetest.serialize(spawndata))
 				spawn_chat(name, "Removed "..sname.." spawn.")

@@ -23,7 +23,4 @@ read_globals = {
 
 	-- Mods
 	"stairs", "stairsplus", "dungeon_loot",
-	
-	-- worldedit
-	"unified_inventory", "inventory_plus", "smart_inventory", "winv",
 }

@@ -1,6 +1,5 @@
 minetest.register_tool("cadmin:pick", {
 	description = "Admin Pickaxe",
-	range = 20,
 	inventory_image = "cadmin_pick.png",
 	--groups = {not_in_creative_inventory = 1},
 	tool_capabilities = {
